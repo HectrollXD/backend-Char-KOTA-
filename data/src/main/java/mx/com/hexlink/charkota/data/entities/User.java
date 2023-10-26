@@ -26,6 +26,14 @@ public class User extends CommonData{
 	@Column(name = "password", nullable = false, length = 256)
 	private String password;
 
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(
+		name = "rel_users_persons",
+		joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+		inverseJoinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "id", nullable = false)}
+	)
+	private Person person;
+
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_type", nullable = false, length = 16)
 	private UserType userType;
