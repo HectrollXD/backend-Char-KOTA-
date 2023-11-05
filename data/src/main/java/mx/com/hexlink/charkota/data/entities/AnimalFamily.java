@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import java.util.List;
+import java.util.UUID;
 
 
 
@@ -30,4 +31,10 @@ public class AnimalFamily extends CommonData {
 
 	@OneToMany(mappedBy = "animalFamily", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
 	private List<AnimalBreed> animalBreeds;
+
+
+
+	public AnimalFamily(UUID id){
+		this.setId(id);
+	}
 }
