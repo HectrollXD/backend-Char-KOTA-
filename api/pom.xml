@@ -16,6 +16,12 @@
 	<description>Módulo para la creación de controladores para la aplicación</description>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>mx.com.hexlink.charkota</groupId>
 			<artifactId>data</artifactId>

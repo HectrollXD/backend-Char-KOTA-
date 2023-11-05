@@ -5,7 +5,7 @@ package mx.com.hexlink.charkota.data.entities.enums;
 public enum UserType {
 	ADMINISTRATOR (0, "ADMINISTRADOR", "Administrador del sistema"),
 	VETERINARY (1, "VETERINARIO", "Veterinario del departamento"),
-	CASHIER (1, "CAJERO", "Cajero de la tienda");
+	CASHIER (2, "CAJERO", "Cajero de la tienda");
 
 
 
