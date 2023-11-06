@@ -21,7 +21,7 @@ public class AnimalBreedRequest {
 	public AnimalBreed toAnimalBreed(AnimalFamily animalFamily){
 		AnimalBreed animalBreed = new AnimalBreed();
 
-		animalBreed.setBreedName(this.breedName);
+		animalBreed.setBreedName(this.breedName.trim().toUpperCase());
 		animalBreed.setAnimalFamily(animalFamily);
 
 		return animalBreed;

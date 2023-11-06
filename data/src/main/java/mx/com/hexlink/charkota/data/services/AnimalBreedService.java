@@ -1,6 +1,7 @@
 package mx.com.hexlink.charkota.data.services;
 
 import mx.com.hexlink.charkota.data.entities.AnimalBreed;
+import mx.com.hexlink.charkota.data.entities.AnimalFamily;
 import mx.com.hexlink.charkota.data.entities.dao.AnimalBreedDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class AnimalBreedService implements BasicServiceAction<AnimalBreed, UUID>
 	AnimalBreedDao repository;
 
 
+
+	public List<AnimalBreed> getByFamily(AnimalFamily family){
+		return repository.findAllByAnimalFamily(family);
+	}
 
 	@Override
 	public AnimalBreed saveData(AnimalBreed dataToSave){
