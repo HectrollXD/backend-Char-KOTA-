@@ -16,6 +16,10 @@ public class OwnerService implements BasicServiceAction<Owner, UUID>{
 
 
 
+	public List<Owner> getByName(String name){
+		return repository.findByNameContaining(name);
+	}
+
 	@Override
 	public Owner saveData(Owner dataToSave){
 		return repository.save(dataToSave);
