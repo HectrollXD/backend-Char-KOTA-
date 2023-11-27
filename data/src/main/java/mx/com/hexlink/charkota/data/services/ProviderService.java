@@ -16,6 +16,10 @@ public class ProviderService implements BasicServiceAction<Provider, UUID> {
 
 
 
+	public List<Provider> getLikeName(String name){
+		return repository.findByNameContaining(name);
+	}
+
 	@Override
 	public Provider saveData(Provider dataToSave){
 		return repository.save(dataToSave);

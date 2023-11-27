@@ -49,7 +49,6 @@ public class AnimalController {
 
 
 
-	// TODO: Pasar a un servicio o a un componente que nos permita llevar mejor el control de las excepciones para cuando no se agregan por cuestiones de uniques.
 	//---------------------------------------------------------------------------------------------- Controlador para crear familia de animales.
 	/**
 	 * Controlador enfocado para crear una o varias familias de animales en la base de datos.
@@ -89,7 +88,7 @@ public class AnimalController {
 
 	//---------------------------------------------------------------------------------------------- Controlador para obtener las familias de animales.
 	/**
-	 * Controlador para la obtención de todas las familias de animales agregadas en la vase de datos
+	 * Controlador para la obtención de todas las familias de animales agregadas en la base de datos
 	 * 
 	 * @return Objeto de respuesta con la lista de todas las familias de animales registradas.
 	 */
@@ -97,7 +96,7 @@ public class AnimalController {
 	@Operation(
 		summary = "Lista de familias de animales",
 		description = """
-		Método para la obtención de todas las familias de animales agregadas en la vase de datos.
+		Método para la obtención de todas las familias de animales agregadas en la base de datos.
 		"""
 	)
 	public GenericResponse<List<AnimalFamilyData>> getAllAnimalFamilies() {
