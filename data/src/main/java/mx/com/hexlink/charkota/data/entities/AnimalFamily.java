@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,7 +19,6 @@ import java.util.UUID;
 	name = "catalog_animal_families",
 	indexes = @Index(name = "family_name_index", unique = true, columnList = "family_name")
 )
-@OnDelete(action = OnDeleteAction.CASCADE)
 public class AnimalFamily extends CommonData {
 	@Column(name = "family_name", length = 32, unique = true, nullable = false)
 	private String familyName;

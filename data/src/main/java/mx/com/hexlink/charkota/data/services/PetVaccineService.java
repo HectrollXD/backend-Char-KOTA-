@@ -4,6 +4,7 @@ import mx.com.hexlink.charkota.data.entities.PetVaccine;
 import mx.com.hexlink.charkota.data.entities.dao.PetVaccineDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,11 @@ public class PetVaccineService implements BasicServiceAction<PetVaccine, UUID>{
 	PetVaccineDao repository;
 
 
+
+	@Transactional(readOnly = true)
+	public List<PetVaccine> getLikeName(String vaccineName){
+		return repository.findByVaccineNameContaining(vaccineName);
+	}
 
 	@Override
 	public PetVaccine saveData(PetVaccine dataToSave){

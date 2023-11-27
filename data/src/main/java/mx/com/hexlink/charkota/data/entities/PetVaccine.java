@@ -25,7 +25,11 @@ public class PetVaccine extends CommonData {
 	@Column(name = "dose", nullable = false)
 	private Double dose;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Pet.class)
-	@JoinColumn(name = "pet_id", nullable = false)
+	@ManyToOne(
+		fetch = FetchType.LAZY,
+		cascade = {CascadeType.MERGE},
+		targetEntity = Pet.class
+	)
+	@JoinColumn(name = "pet_id"/* , nullable = true */)
 	private Pet pet;
 }

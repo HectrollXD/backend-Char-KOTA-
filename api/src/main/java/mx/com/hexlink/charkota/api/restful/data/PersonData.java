@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mx.com.hexlink.charkota.data.entities.Person;
+import java.util.UUID;
 
 
 
@@ -11,6 +12,7 @@ import mx.com.hexlink.charkota.data.entities.Person;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersonData {
+	private UUID id;
     private String name;
     private String lastname;
     private String phone;
@@ -20,6 +22,7 @@ public class PersonData {
 
 	public static PersonData fromPerson(Person person){
 		return new PersonData(
+			person.getId(),
 			person.getName().trim().toUpperCase(),
 			person.getLastname().trim().toUpperCase(),
 			person.getPhone().trim(),

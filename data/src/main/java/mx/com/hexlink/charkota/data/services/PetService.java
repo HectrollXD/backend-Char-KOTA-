@@ -4,6 +4,8 @@ import mx.com.hexlink.charkota.data.entities.Pet;
 import mx.com.hexlink.charkota.data.entities.dao.PetDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +17,11 @@ public class PetService implements BasicServiceAction<Pet, UUID>{
 	PetDao repository;
 
 
+
+	@Transactional(readOnly = true)
+	public List<Pet> getLikeName(String name){
+		return repository.findByNameContaining(name);
+	}
 
 	@Override
 	public Pet saveData(Pet dataToSave){

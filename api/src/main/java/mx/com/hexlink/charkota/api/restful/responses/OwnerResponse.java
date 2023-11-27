@@ -5,10 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import mx.com.hexlink.charkota.api.restful.data.OwnerData;
 import mx.com.hexlink.charkota.data.entities.Owner;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 
 @Data
