@@ -4,6 +4,7 @@ import mx.com.hexlink.charkota.data.entities.User;
 import mx.com.hexlink.charkota.data.entities.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,6 +16,11 @@ public class UserService implements BasicServiceAction<User, UUID> {
 	UserDao repository;
 
 
+
+	@Transactional(readOnly = true)
+	public List<User> getLikeUsername(String username){
+		return repository.findByUsernameContainingIgnoreCase(username);
+	}
 
 	@Override
 	public User saveData(User dataToSave){
