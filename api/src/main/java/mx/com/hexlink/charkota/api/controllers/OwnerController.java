@@ -57,6 +57,14 @@ public class OwnerController {
 	}
 
 	//---------------------------------------------------------------------------------------------- Controlador para modificar un propietario.
+	/**
+	 * Método para modificar el registro de un propietario en específico.
+	 * 
+	 * @param ownerId Id del propietario de la mascota (opcional).
+	 * @param request Datos del propietario para ser modificado.
+	 * @param httpResponse Respuesta de tipo HTTP para retornar estado 404.
+	 * @return Objeto de respuesta con los datos del propietario modificado.
+	 */
 	@PutMapping("/{ownerId}")
 	@Operation(
 		summary = "Modificar propietario",

@@ -31,7 +31,16 @@ public class UserController {
 
 
 
+	// TODO: Encriptar contraseña.
 	//---------------------------------------------------------------------------------------------- Get users
+	/**
+	 * Método para obtener la lista de los usuarios agregados. Este puede regresar por nombre de 
+		usuario o por ID del usuario. Si vienen ambos, se le dará prioridad al ID.
+
+	 * @param userId Id del usuario deseado (opcional).
+	 * @param username Nombre de usuario a buscar (opcional).
+	 * @return Objeto de respuesta con los datos de los usuarios.
+	 */
 	@GetMapping
 	@Operation(
 		summary = "Obtener usuarios",
@@ -68,6 +77,12 @@ public class UserController {
 	}
 
 	//---------------------------------------------------------------------------------------------- Add new user
+	/**
+	 * Método para crear un usuario y la información de la persona asociada a la cuenta.
+	 * 
+	 * @param request Datos del usuario que se desea agregar.
+	 * @return Objeto de respuesta con los datos del usuario agregado.
+	 */
 	@PostMapping
 	@Operation(
 		summary = "Crear usuarios",

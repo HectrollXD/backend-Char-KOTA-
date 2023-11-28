@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
+
 
 
 @Data
@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "data_products")
 @EqualsAndHashCode(callSuper = true)
 public class Product extends CommonData{
-	@Column(name = "bar_code", length = 16, unique = true, nullable = false)
+	@Column(name = "bar_code", length = 16, nullable = false)
 	private String barCode;
 
 	@Column(name = "name", length = 64, nullable = false)
@@ -31,7 +31,7 @@ public class Product extends CommonData{
 	@Column(name = "qty", nullable = false)
 	private Integer qty;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Provider.class)
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER, targetEntity = Provider.class)
 	@JoinColumn(name = "provider_id", nullable = false)
 	private Provider provider;
 

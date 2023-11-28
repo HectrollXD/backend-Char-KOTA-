@@ -4,7 +4,9 @@ import mx.com.hexlink.charkota.data.entities.Product;
 import mx.com.hexlink.charkota.data.entities.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -15,6 +17,25 @@ public class ProductService implements BasicServiceAction<Product, UUID> {
 	ProductDao repository;
 
 
+
+	
+	@Transactional(readOnly = true)
+	public Product getByBarCode(String barCode){
+		Product product = repository.findByBarCode(barCode);
+
+		if( Objects.nonNull(product) && product.getIsDeleted() ){
+			return null;
+		}
+
+		return product;
+	}
+
+	@Transactional(readOnly = true)
+	public List<Product> getLikeName(String name){
+		return repository.findByNameContainingIgnoreCase(name).stream().filter(
+			obj -> obj.getIsDeleted() == false
+		).toList();
+	}
 
 	@Override
 	public Product saveData(Product dataToSave){
@@ -28,17 +49,31 @@ public class ProductService implements BasicServiceAction<Product, UUID> {
 
 	@Override
 	public Product getById(UUID id){
-		return repository.findById(id).orElse(null);
+		Product product = repository.findById(id).orElse(null);
+
+		if( Objects.nonNull(product) && product.getIsDeleted() ){
+			return null;
+		}
+
+		return product;
 	}
 
 	@Override
 	public List<Product> getAll(){
-		return (List<Product>) repository.findAll();
+		List<Product> products = (List<Product>) repository.findAll();
+
+		return products.stream().filter(
+			obj -> obj.getIsDeleted() == false
+		).toList();
 	}
 
 	@Override
 	public List<Product> getAllByIds(List<UUID> ids){
-		return (List<Product>) repository.findAllById(ids);
+		List<Product> products = (List<Product>) repository.findAllById(ids);
+
+		return products.stream().filter(
+			obj -> obj.getIsDeleted() == false
+		).toList();
 	}
 
 	@Override
