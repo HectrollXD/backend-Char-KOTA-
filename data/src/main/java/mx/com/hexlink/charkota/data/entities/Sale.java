@@ -19,9 +19,13 @@ public class Sale extends CommonData{
 	@Column(name = "total", nullable = false)
 	private Double total;
 
-	@OneToMany(mappedBy = "sale", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(
+		mappedBy = "sale",
+		cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.DETACH},
+		fetch = FetchType.EAGER
+	)
 	private List<ProductSale> productSales;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = User.class)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, targetEntity = User.class)
 	private User user;
 }

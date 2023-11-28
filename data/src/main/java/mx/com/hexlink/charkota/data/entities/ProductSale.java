@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "rel_products_sales")
 @EqualsAndHashCode(callSuper = true)
 public class ProductSale extends CommonData {
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Product.class)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, targetEntity = Product.class)
 	@JoinColumn(name = "product_id", nullable = false)
 	private Product product;
 

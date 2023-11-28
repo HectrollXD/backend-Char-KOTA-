@@ -35,6 +35,6 @@ public class Product extends CommonData{
 	@JoinColumn(name = "provider_id", nullable = false)
 	private Provider provider;
 
-	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<ProductSale> productSales;
 }
