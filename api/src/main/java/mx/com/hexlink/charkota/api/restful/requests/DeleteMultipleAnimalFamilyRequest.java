@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeleteMultipleAnimalFamilyRequest {
-	List<UUID> familiesId;
+	private List<UUID> familiesId;
 }

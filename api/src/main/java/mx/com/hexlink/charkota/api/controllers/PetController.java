@@ -51,6 +51,7 @@ public class PetController {
 	 * @return Lista de coincidencias.
 	 */
 	@GetMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Obtener mascotas",
 		description = """
@@ -100,6 +101,7 @@ public class PetController {
 	 * @return Objeto de reuesta con los datos de la mascota agregada.
 	 */
 	@PostMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Crear mascota",
 		description = """
@@ -167,6 +169,7 @@ public class PetController {
 	 * @return Objeto de respuesta con los datos de la mascota midificada.
 	 */
 	@PutMapping("/{petID}")
+	@CrossOrigin
 	@Operation(
 		summary = "Editar mascota",
 		description = """

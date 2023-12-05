@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +51,7 @@ public class ProductController {
 	 * @return Objeto de respuesta con los datos de todos los productos encontrados.
 	 */
 	@GetMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Obtener productos",
 		description = """
@@ -103,13 +105,14 @@ public class ProductController {
 	 * @return Objeto de respuesta con los datos del producto agregado.
 	 */
 	@PostMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Crear producto",
 		description = """
 		Método para crear un producto y asignarle su respectivo proveedor.
 		"""
 	)
-	public GenericResponse<ProductData> createOwner(@RequestBody ProductRequest request) {
+	public GenericResponse<ProductData> createProducts(@RequestBody ProductRequest request) {
 		// Buscamos el proveedor:
 		Provider provider = providerService.getById(request.getProviderId());
 
@@ -143,13 +146,14 @@ public class ProductController {
 	 * 		    encontrado en caso que no se encuentre el ID.
 	 */
 	@PutMapping("/{productId}")
+	@CrossOrigin
 	@Operation(
 		summary = "Modificar producto",
 		description = """
 		Método para modificar un producto en específico.
 		"""
 	)
-	public GenericResponse<ProductData> editOwner(
+	public GenericResponse<ProductData> editProduct(
 		@PathVariable UUID productId, @RequestBody ProductRequest request
 	) {
 		// Buscamos el producto.
@@ -190,13 +194,14 @@ public class ProductController {
 	 * @return Objeto de respuesta si se realizó la eliminación o si no se encontró el producto.
 	 */
 	@DeleteMapping("/{productId}")
+	@CrossOrigin
 	@Operation(
 		summary = "Eliminar producto",
 		description = """
 			Método para eliminar un producto de manera lógica.
 		"""
 	)
-	public GenericResponse<?> editOwner(
+	public GenericResponse<?> deleteProduct(
 		@PathVariable UUID productId
 	) {
 		// Buscamos el producto.

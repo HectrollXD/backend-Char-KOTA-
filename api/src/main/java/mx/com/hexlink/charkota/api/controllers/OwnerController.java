@@ -35,6 +35,7 @@ public class OwnerController {
 	 * @return Objeto de respuesta con los datos del propietario creado en la base de datos.
 	 */
 	@PostMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Agregar propietario",
 		description = """
@@ -66,6 +67,7 @@ public class OwnerController {
 	 * @return Objeto de respuesta con los datos del propietario modificado.
 	 */
 	@PutMapping("/{ownerId}")
+	@CrossOrigin
 	@Operation(
 		summary = "Modificar propietario",
 		description = """
@@ -116,11 +118,12 @@ public class OwnerController {
 	 * datos. Este se realiza mediate el ID del propietario o por el nombre. En caso de no venir
 	 * ninguno, arroja todos los propietarios registrados en la base de datos.
 	 *
-	 * @param id ID del propietario.
+	 * @param ownerId ID del propietario.
 	 * @param name Nombre del propietario.
 	 * @return Lista con las coincidencias de propietarios encontrados.
 	 */
 	@GetMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Propietarios registrados",
 		description = """
@@ -130,14 +133,14 @@ public class OwnerController {
 		"""
 	)
 	public GenericResponse<OwnerResponse> getOwnersData(
-		@RequestParam(required = false) UUID id, @RequestParam(required = false) String name
+		@RequestParam(required = false) UUID ownerId, @RequestParam(required = false) String name
 	) {
 		// Declaramos la lista de propietarios.
 		List<Owner> owners;
 
 		// Comparamos querys del request dando preferencia al ID y obtenemos los datos dependiendo del caso.
-		if( Objects.nonNull(id) ){
-			Owner owner = ownerService.getById(id);
+		if( Objects.nonNull(ownerId) ){
+			Owner owner = ownerService.getById(ownerId);
 
 			owners = Objects.isNull(owner) ? List.of() : List.of(owner);
 		}

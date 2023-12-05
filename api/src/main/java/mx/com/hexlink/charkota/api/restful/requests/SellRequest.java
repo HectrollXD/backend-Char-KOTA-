@@ -14,7 +14,7 @@ import mx.com.hexlink.charkota.data.entities.Sale;
 @AllArgsConstructor
 public class SellRequest {
 	private UUID userId;
-	public List<ProductSaleRequest> productsSales;
+	private List<ProductSaleRequest> productsSales;
 
 
 

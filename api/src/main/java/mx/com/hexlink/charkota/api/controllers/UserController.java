@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,6 +43,7 @@ public class UserController {
 	 * @return Objeto de respuesta con los datos de los usuarios.
 	 */
 	@GetMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Obtener usuarios",
 		description = """
@@ -84,6 +86,7 @@ public class UserController {
 	 * @return Objeto de respuesta con los datos del usuario agregado.
 	 */
 	@PostMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Crear usuarios",
 		description = """

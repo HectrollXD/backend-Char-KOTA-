@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,6 +39,7 @@ public class ProviderController {
 	 * @return Respuesta con los datos de los proveedores creados.
 	 */
 	@PostMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Crear multiples proveedores",
 		description = """
@@ -71,6 +73,7 @@ public class ProviderController {
 	 * @return Objeto de respuesta con la lista de los proveedores encontrados.
 	 */
 	@GetMapping
+	@CrossOrigin
 	@Operation(
 		summary = "Lista de proveedores",
 		description = """

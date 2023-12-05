@@ -28,6 +28,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,6 +58,7 @@ public class AnimalController {
 	 * @return Respueta de las familias agregadas.
 	 */
 	@PostMapping("/families")
+	@CrossOrigin
 	@Operation(
 		summary = "Crear familias de animales",
 		description = """
@@ -93,6 +95,7 @@ public class AnimalController {
 	 * @return Objeto de respuesta con la lista de todas las familias de animales registradas.
 	 */
 	@GetMapping("/families")
+	@CrossOrigin
 	@Operation(
 		summary = "Lista de familias de animales",
 		description = """
@@ -124,6 +127,7 @@ public class AnimalController {
 	 * @return Objeto de respuesta con la confirmación de si se realizó.
 	 */
 	@DeleteMapping("/families")
+	@CrossOrigin
 	@Operation(
 		summary = "Eliminar familias de animales",
 		description = """
@@ -156,6 +160,7 @@ public class AnimalController {
 	 * @return Objeto de respuesta con el status de si fué agregado y los datos agregados.
 	 */
 	@PostMapping("/breeds")
+	@CrossOrigin
 	@Operation(
 		summary = "Crear razas de animales",
 		description = """
@@ -205,8 +210,7 @@ public class AnimalController {
 		// Retornamos la respuesta.
 		return response;
 	}
-	
-	// TODO: Pasar a un servicio o a un componente que nos permita llevar mejor el control de las excepciones para cuando no se agregan por cuestiones de uniques.
+
 	//---------------------------------------------------------------------------------------------- Controlador para obtener la lista de razas agregadas.
 	/**
 	 * Controlador para la obtención de todas las razas de animales registradas en la base de datos.
@@ -216,6 +220,7 @@ public class AnimalController {
 	 * @return Objeto de respuesta con los registros de la base de datos.
 	 */
 	@GetMapping("/breeds")
+	@CrossOrigin
 	@Operation(
 		summary = "Obtener todas las razas",
 		description = """
@@ -261,6 +266,7 @@ public class AnimalController {
 	 * @return Objeto de respuesta generica sin datos.
 	 */
 	@DeleteMapping("/breeds")
+	@CrossOrigin
 	@Operation(
 		summary = "Eliminar razas de animales",
 		description = """

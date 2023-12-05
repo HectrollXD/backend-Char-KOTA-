@@ -1,5 +1,7 @@
 package mx.com.hexlink.charkota.api.restful.requests;
 
+import java.util.Objects;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +28,10 @@ public class OwnerRequest {
 		owner.setLastname(lastname.trim().toUpperCase());
 		owner.setPhone(phone);
 		owner.setEmail(email);
-		owner.setAddress(address.trim().toUpperCase());
+
+		if( Objects.nonNull(address) ){
+			owner.setAddress(address.trim().toUpperCase());
+		}
 
 		return owner;
 	}
