@@ -136,7 +136,7 @@ public class PetController {
 		Pet petSaved = petService.saveData(petToSaved);
 
 		// Guardamos las vacunas en caso que tenga.
-		if( !request.getVaccines().isEmpty() ){
+		if(Objects.nonNull(request.getVaccines())  && !request.getVaccines().isEmpty() ){
 			petSaved.setVaccines(
 				petVaccineService.saveMultipleData(
 					request.getVaccines().stream().map(

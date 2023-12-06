@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -17,17 +19,17 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class Provider extends CommonData{
 	@Column(name = "name", length = 0, unique = true, nullable = false)
-	private String name;
+	private String name = "";
 
 	@Column(name = "rfc", length = 0, unique = true, nullable = false)
-	private String rfc;
+	private String rfc = "";
 
 	@Column(name = "phone", length = 0, unique = true, nullable = false)
-	private String phone;
+	private String phone = "";
 
 	@Column(name = "email", length = 0, unique = true, nullable = false)
-	private String email;
+	private String email = "";
 
 	@OneToMany(mappedBy = "provider", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Product> products;
+	private List<Product> products = new ArrayList<>();
 }

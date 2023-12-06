@@ -8,12 +8,16 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 import java.util.UUID;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@OnDelete(action = OnDeleteAction.CASCADE)
 @EqualsAndHashCode(callSuper = true)
 @Table(
 	name = "catalog_animal_families",
@@ -26,7 +30,7 @@ public class AnimalFamily extends CommonData {
 	@Column(name = "description", length = 128)
 	private String description;
 
-	@OneToMany(mappedBy = "animalFamily", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "animalFamily", cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	private List<AnimalBreed> animalBreeds;
 
 

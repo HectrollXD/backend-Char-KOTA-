@@ -9,6 +9,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 
 
 @Data
@@ -17,6 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "data_pets")
 @EqualsAndHashCode(callSuper = true)
+@OnDelete(action = OnDeleteAction.CASCADE)
 public class Pet extends CommonData{
 	@Column(name = "name")
 	private String name;
@@ -28,7 +32,7 @@ public class Pet extends CommonData{
 	@JoinColumn(name = "animal_breed_id", nullable = false)
 	private AnimalBreed animalBreed;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, targetEntity = Owner.class)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, targetEntity = Owner.class)
 	@JoinColumn(name = "owner_id", nullable = false)
 	private Owner owner;
 

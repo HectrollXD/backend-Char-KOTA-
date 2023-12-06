@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import mx.com.hexlink.charkota.data.entities.Product;
 import mx.com.hexlink.charkota.data.entities.ProductSale;
+import mx.com.hexlink.charkota.data.entities.Sale;
 
 
 
@@ -20,7 +21,7 @@ public class ProductSaleRequest {
 
 
 
-	public ProductSale toProductSale(){
+	public ProductSale toProductSale(Sale sale){
 		ProductSale productSale = new ProductSale();
 		Product product = new Product();
 
@@ -30,6 +31,7 @@ public class ProductSaleRequest {
 		productSale.setQty(qty);
 		productSale.setUnitaryPrice(unitaryPrice);
 		productSale.setTotalPrice(totalPrice);
+		productSale.setSale(sale);
 
 		return productSale;
 	}

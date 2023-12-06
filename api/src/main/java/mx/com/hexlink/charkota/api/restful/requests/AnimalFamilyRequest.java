@@ -11,8 +11,8 @@ import mx.com.hexlink.charkota.data.entities.AnimalFamily;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AnimalFamilyRequest {
-	private String familyName;
-	private String description;
+	private String familyName = "";
+	private String description = "";
 
 
 

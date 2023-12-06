@@ -26,6 +26,6 @@ public class Sale extends CommonData{
 	)
 	private List<ProductSale> productSales;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE, targetEntity = User.class)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, targetEntity = User.class)
 	private User user;
 }

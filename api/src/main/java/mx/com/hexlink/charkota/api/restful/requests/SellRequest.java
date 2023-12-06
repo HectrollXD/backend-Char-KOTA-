@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mx.com.hexlink.charkota.data.entities.Sale;
+import mx.com.hexlink.charkota.data.entities.User;
 
 
 
@@ -18,15 +19,18 @@ public class SellRequest {
 
 
 
- 	public Sale toSale(){
+ 	public Sale toSale(User user){
 		Sale sale = new Sale();
 
 		sale.setTotal(
 			productsSales.stream().mapToDouble(obj -> obj.getTotalPrice()).sum()
 		);
 		sale.setProductSales(
-			productsSales.stream().map(ProductSaleRequest::toProductSale).toList()
+			productsSales.stream().map(
+				obj -> obj.toProductSale(sale)
+			).toList()
 		);
+		sale.setUser(user);
 
 		return sale;
 	}

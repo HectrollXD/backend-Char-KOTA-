@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import mx.com.hexlink.charkota.api.restful.enums.Status;
 import mx.com.hexlink.charkota.api.restful.requests.ProductSaleRequest;
 import mx.com.hexlink.charkota.api.restful.requests.SellRequest;
+import mx.com.hexlink.charkota.api.restful.responses.DetailSellResponse;
 import mx.com.hexlink.charkota.api.restful.responses.GenericResponse;
 import mx.com.hexlink.charkota.api.restful.responses.SellResponse;
 import mx.com.hexlink.charkota.data.entities.Product;
@@ -42,7 +44,7 @@ public class SellController {
 	@PostMapping
 	@CrossOrigin
 	@Operation(
-		summary = "",
+		summary = "Crear venta",
 		description = """
 		Método para crear una nueva venta de productos en la base de datos. Esta descuenta los
 		productos existentes automáticamente.
@@ -108,13 +110,32 @@ public class SellController {
 		productService.saveMultipleData(products);
 
 		// Guardamos los registros de ventas en la tabla de ventas.
-		Sale saleSaved = saleService.saveData(request.toSale());
+		Sale saleSaved = saleService.saveData(request.toSale(user));
 
 		// Creamos la respuesta y la retornamos.
 		return new GenericResponse<SellResponse>(
 			Status.OK.isSuccess(),
 			Status.OK.getDescription(),
 			SellResponse.fromSale(saleSaved)
+		);
+	}
+
+
+
+	//---------------------------------------------------------------------------------------------- Crear ventas.
+	@GetMapping
+	@CrossOrigin
+	@Operation(
+		summary = "Obtener lista de ventas",
+		description = """
+		Método para obtener las ventas regitradas en el sistema.
+		"""
+	)
+	public GenericResponse<DetailSellResponse> getAllSells(){
+		return new GenericResponse<>(
+			Status.OK.isSuccess(),
+			Status.OK.getDescription(),
+			DetailSellResponse.fromSales(saleService.getAll())
 		);
 	}
 }

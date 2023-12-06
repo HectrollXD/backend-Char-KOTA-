@@ -21,6 +21,7 @@ public class ProductData {
 	private ProviderData provider;
 
 
+
 	public static ProductData fromProduct(Product product){
 		return new ProductData(
 			product.getId(),

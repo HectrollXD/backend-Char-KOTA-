@@ -1,5 +1,6 @@
 package mx.com.hexlink.charkota.api.restful.requests;
 
+import java.util.Objects;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,10 +28,13 @@ public class ProductRequest {
 
 		product.setBarCode(barCode.trim());
 		product.setName(name.trim().toUpperCase());
-		product.setDescription(description.trim().toUpperCase());
 		product.setPrice(price);
 		product.setQty(qty);
 		product.setProvider(provider);
+
+		if( Objects.nonNull(description) ) {
+			product.setDescription(description.trim().toUpperCase());
+		}
 
 		return product;
 	}
