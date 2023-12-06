@@ -1,5 +1,6 @@
 package mx.com.hexlink.charkota.api.restful.data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,9 @@ public class SaleData {
 	private UUID id;
 	private Double total;
 	private UserData user;
+	private LocalDateTime datetime;
 	private List<ProductSaleData> products;
+
 
 
 	public static SaleData fromSale(Sale sale){
@@ -24,6 +27,7 @@ public class SaleData {
 			sale.getId(),
 			sale.getTotal(),
 			UserData.fromUser(sale.getUser()),
+			sale.getCreatedAt(),
 			sale.getProductSales().stream().map(ProductSaleData::fromProductSale).toList()
 		);
 	}
